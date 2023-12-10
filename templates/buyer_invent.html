@@ -1,0 +1,251 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sales and Requests</title>
+      <style>
+          * {
+              margin: 0px;
+              font-family: 'Cascadia Code', sans-serif;
+          }
+
+          .hidden {
+              display: none;
+          }
+
+          .header {
+              background: url("https://1.bp.blogspot.com/-DkYtIMzCRAo/WdgmplMhTiI/AAAAAAAAD9Y/2SUqU7LU3NcQgO_A7rJC-hFA7d6H0wgjgCLcBGAs/s1600/black%2Bvegetable%2Boct4%2B%25281%2Bof%2B1%2529.jpg");
+              background-size: contain;
+              height: 150px;
+          }
+
+          .log {
+              border-radius: 50%;
+              height: 100px;
+              width: 100px;
+              margin-top: 12px;
+              margin-left: 12px;
+              transition: transform 1.5s ease-out;
+          }
+
+          #sales-section table {
+              width: 80%;
+              border-collapse: collapse;
+              margin-left: 10%;
+          }
+
+          #sales-section th,
+          #sales-section td {
+              border: 1px solid #ddd;
+              padding: 8px;
+          }
+
+          #sales-section th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #4CAF50;
+              color: white;
+          }
+
+          .card {
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+              padding: 16px;
+              text-align: center;
+              background-color: #f1f1f1;
+              margin: 10px;
+          }
+
+          .btn {
+              padding: 6px 16px;
+              font-size: 16px;
+              color: #f1f1f1;
+              background: #2F4F4F;
+              border: none;
+              font-weight: 700;
+              outline: none;
+              border-radius: 5px;
+              margin-left: 20px;
+              cursor: pointer;
+              transition: opacity .3s linear;
+          }
+
+          .btn:hover {
+              opacity: .7;
+          }
+
+          .input {
+              border-radius: 10px;
+              padding: 10px;
+              margin: 0.5px;
+          }
+
+          .tabs {
+              padding: 10px;
+              color: #FFF8DC;
+              margin-top: 10px;
+              text-decoration: none;
+              font-family: 'Cascadia Code', sans-serif;
+              font-weight: 400;
+
+          }
+
+          .tabs:hover {
+              color: #F0F8FF;
+              transform: scale(1.05);
+          }
+
+          .headi {
+              font-size: 100px;
+              color: #BBE4CE;
+              float: right;
+          }
+
+          .cp {
+              color: #FFF8DC;
+          }
+
+          .logi {
+              width: 25px;
+              height: 25px;
+          }
+
+          .hi {
+              padding: 20px;
+          }
+
+          .profile {
+              width: 15%;
+              height: 100%;
+              color: white;
+              background-color: #001a21;
+              float: left;
+              position: fixed;
+          }
+
+          .content {
+              width: 85%;
+              height: auto;
+              float: right;
+          }
+
+          .prof_tab {
+              width: 100%;
+              padding: 10px 16px;
+              font-size: 15px;
+              float: left;
+          }
+
+          .prof_tab:hover {
+              margin-left: 10px;
+              width: 75%;
+              background-color: #dddddd51;
+              border-radius: 10px;
+          }
+
+          .foot {
+              font-family: 'Cascadia Code';
+              position: absolute;
+              margin: 10px;
+              bottom: 0;
+              padding-left: 10px;
+          }
+
+          .sales-form{
+            margin-left:10%;
+          }
+
+      </style>
+  </head>
+
+  <body>
+      <div class="profile">
+          <div style="height:10px;"></div>
+          <div class="prof_tab">
+              <a class="tabs" href="{{ url_for('returner', username = username) }}">Home</a>
+          </div><div class="prof_tab">
+          <a class="tabs" href="{{ url_for('buy', username = username) }}">Buy</a>
+        </div>
+          <div class="prof_tab">
+              <a class="tabs" href="{{ url_for('connection', username = username) }}">Connections</a>
+          </div>
+          <div class="foot"> ©fAB • 2023</div>
+      </div>
+      <div class="content">
+  <div class="header">
+      <a class="button" href="{{ url_for('returner', username=username) }}"><img class="log"
+              src="https://farmersupport.paipananya28.repl.co/static/logo.png"></a>
+      <p class="headi">Inven<span class="cp">tory.</span></p>
+  </div>
+
+  <br><br><br>
+  <div id="sales-section" class="hidden">
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Quantity (kg)</th>
+                <th>Available till</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for sale in sales_data %}
+              <tr>
+                  <td>{{ sale.cname }}</td>
+                  <td>{{ sale.iqty }}</td>
+                  <td>{{ sale.exp }}</td>
+
+
+
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+
+
+
+
+
+    <div id="requests-section">
+        <h2>Requests</h2>
+    </div>
+
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+     
+          const salesSection = document.getElementById('sales-section');
+          const requestsSection = document.getElementById('requests-section');
+
+          const toggleSales = document.getElementById('toggle-sales');
+          const toggleRequests = document.getElementById('toggle-requests');
+
+          const salesForm = document.getElementById('sales-form');
+
+    
+          salesSection.classList.remove('hidden');
+          requestsSection.classList.add('hidden');
+          salesForm.classList.add('hidden'); 
+          toggleSales.addEventListener('click', function () {
+              salesSection.classList.remove('hidden');
+              requestsSection.classList.add('hidden');
+              salesForm.classList.toggle('hidden'); 
+          });
+
+          toggleRequests.addEventListener('click', function () {
+              salesSection.classList.add('hidden');
+              requestsSection.classList.remove('hidden');
+              salesForm.classList.add('hidden'); 
+          });
+      });
+
+
+
+  </script>
+
+</body>
+
+</html>

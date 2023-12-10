@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+  <style>
+      *{
+        margin: 0px;
+        font-family: 'Cascadia Code';
+        max-height:auto;
+        max-width:1500px;
+      }
+
+    .header {
+      background-image: url('https://wallpapercave.com/wp/wp12327107.jpg') ;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 650px;
+      background-position: center;
+
+    }
+
+    .headeri {
+      background-image: url('https://market-management-website--paipananya28.repl.co/static/register_now.png') ;
+      background-attachment: fixed;
+      height: 550px;
+      background-position: center;
+
+    }
+
+    .log {
+      border-radius: 50%;
+      height: 100px;
+      width:130px;
+      margin-top: 12px;
+      margin-left: 12px;
+      transition: transform 1.5s ease-out;
+    }
+
+    .logo:hover {
+      transform: scale(1.2);
+    }
+
+    .logo_r {
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      padding-right: 6px;
+    }
+
+    .button {
+      float: right;
+      height: 35px;
+      align-items: center;
+      display: flex;
+      border-radius: 50px;
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      color: black;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      color: rgb(255, 233, 233);
+    }
+
+    .button1 {
+      margin-block-start:180px;
+      margin-left: 30px;
+      background-color: #7e3939;
+      float:left;
+      font-size: 30px;
+      padding-top:10px;
+      padding-bottom:10px;
+      padding-left:20px;
+      padding-right:20px;
+      border-radius:25px;
+
+      color: black;
+      text-decoration: none;
+      border-color:#7e3939;
+      position: relative;
+    }
+
+    .button1:hover {
+      background-color: transparent;
+      color: #7e3939;
+      border-color:#7e3939;
+    }
+
+    .menu_tabs {
+      float: left;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 17px;
+      height: 80px;
+      color:rgba(0, 0, 0, 0.599);
+    }
+
+
+    .tabs {
+      float: right;
+      padding: 10px;
+      color: black;
+      margin-top: 10px;
+      text-decoration: none;
+
+      font-weight: 400;
+
+    }
+
+    .tabs:hover {
+      color: rgb(255, 233, 233);
+      transform: scale(1.05);
+    }
+    .headw{
+      font-size: 95px;
+      text-align: right;
+    }
+
+    span{
+      color: #ae81c9d4;
+      font-weight:900;
+
+    }
+
+    footer{
+      background: #f1f1f1;
+      padding: 90px 0;
+    }
+
+    .footer-container{
+      max-width: 1300px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap-reverse;
+    }
+
+    .logo{
+      width: 180px;
+    }
+
+    .social-media{
+      margin: 20px 0;
+    }
+
+    .social-media a{
+      color: #001a21;
+      margin-right: 25px;
+      font-size: 22px;
+      text-decoration: none;
+      transition: .3s linear;
+    }
+
+    .social-media a:hover{
+      color: #ae81c9d4;
+    }
+
+    .right-col h1{
+      font-size: 26px;
+    }
+
+    .border{
+      width: 100px;
+      height: 4px;
+      background: #ae81c9d4;
+    }
+
+    .newsletter-form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .txtb{
+      flex: 1;
+      padding: 18px 40px;
+      font-size: 16px;
+      color: #ae81c9d4;
+      background: #ddd;
+      border: none;
+      font-weight: 700;
+      outline: none;
+      border-radius: 30px;
+      min-width: 260px;
+    }
+
+    .btn{
+      padding: 18px 40px;
+      font-size: 16px;
+      color: #f1f1f1;
+      background: #ae81c9d4;
+      border: none;
+      font-weight: 700;
+      outline: none;
+      border-radius: 30px;
+      margin-left: 20px;
+      cursor: pointer;
+      transition: opacity .3s linear;
+    }
+
+    .btn:hover{
+      opacity: .7;
+    }
+
+    .page-content{
+      min-height: 100vh;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mainimg{
+      width: 1250px;
+      height: 700px;
+      position:center;
+      margin-left:60px;
+    }
+
+    .section1{
+      height:120px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .tag {
+      margin-right: 10px;    
+        width: 500px;
+        height: 180px;
+        position:center;
+
+    }
+
+    .count-container {
+      display: flex;
+      justify-content: space-around;
+
+      font-size: 30px;
+    }
+
+    .count-item {
+      text-align: center;
+    }
+
+    .name {
+      margin-bottom: 5px;
+      padding-left:30px;
+
+      font-size: 30px;
+    }
+
+
+
+    .tag1{
+      position:center;
+      margin-left:-20px;
+    }
+
+
+    .dialog{
+      margin-left:20px;
+      margin-right:50%;
+      margin-top:100px;
+      font-size:60px;
+      color:white;
+      float:right;
+    }
+    
+    .sales{
+      height: 1000px;
+      width: auto;
+      background-image:url("https://farmersupport.paipananya28.repl.co/static/sales desk.png");
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .sell_btn{
+      margin-left: 250px;
+      margin-top:200px;
+      text-decoration:none;
+      font-size:30px;
+      padding: 10px 20px;
+      background-color: #B22222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 15px;
+      border-color:white;
+
+    }
+
+    .sell_btn:hover{
+      background-color: white;
+      color:  #B22222;
+      border-color:#B22222;
+    }
+    .footer {
+        background-color: #e98debc2;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        align-items: center; 
+    }
+
+    .icon {
+        font-size: 24px;
+        margin: 0 10px;
+        color: #fff;
+        text-decoration: none; 
+    }
+
+    .icon.email {
+        text-decoration: none; 
+    }
+
+    .social-icons {
+        text-align: left; 
+        order: 1; 
+    }
+
+
+    .copyright {
+        margin-top: 10px;
+        font-size: 12px;
+        order: 2;
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+    .headerI {
+      background-image: url('https://wallpapercave.com/wp/wp12394578.jpg') ;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 450px;
+      background-position: center;
+      color:white;
+
+    }
+
+  </style>
+  <script href="home_script.js"></script>
+
+</head>
+
+<body>
+  <div class="header">
+    <div class="menu-tabs">
+      <img class="log" src="https://farmersupport.paipananya28.repl.co/static/logob.png" alt="My Logo">
+      <a class="button" href="#">Partnership</a>
+
+      <a class="tabs" href="/community">Community</a>
+      <a class="tabs" href="/weather">Weather</a>
+      <a class="tabs" href="{{ url_for('profile', username=username) }}">Profile</a>
+    </div>
+    <p class="dialog">Cultivating Dreams,<br>Nurturing Growth </p>
+  </div>
+  <div>
+    <div>
+    </div>
+  </div>
+
+
+  <img src="https://farmersupport.paipananya28.repl.co/static/farmer_main.png" >
+  <div class="headerI">
+    <p class="dialog">Start where you are. Use what you have. Do what you can. </p>
+    <div class="sales">
+      <a class="sell_btn" href="{{ url_for('buyer_buy', username = username) }}">INVENTORY</a>
+
+    </div>
+
+  <div class="footer">
+      <div class="social-icons">
+          <a href="mailto:your.email@gmail.com" class="icon email">&#9993;</a> 
+          <a href="https://twitter.com/your-twitter" class="icon" target="_blank"><i class="fab fa-twitter"></i></a> 
+          <a href="https://www.instagram.com/your-instagram" class="icon" target="_blank"><i class="fab fa-instagram"></i></a> 
+      </div>
+
+      <div class="copyright">
+          &copy; 2023 .FAB All rights reserved.
+      </div>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const countElement = document.getElementById('farmerCount');
+
+      function updateCount() {
+          fetch('/get_farmer_count')
+              .then(response => response.json())
+              .then(data => {
+                  countElement.textContent = data.count;
+                  if (data.count <= 100) {
+                      requestAnimationFrame(updateCount);
+                  } else {
+                      countElement.style.color = '#e74c3c'; 
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      }
+      const countElement1 = document.getElementById('agentCount');
+
+      function updateCount1() {
+          fetch('/get_agent_count')
+              .then(response => response.json())
+              .then(data => {
+                  countElement1.textContent = data.count;
+                  if (data.count <= 100) {
+                      requestAnimationFrame(updateCount1);
+                  } else {
+                      countElement1.style.color = '#e74c3c'; 
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      }
+
+        updateCount1();
+      const countElement2 = document.getElementById('buyerCount');
+
+      function updateCount2() {
+          fetch('/get_buyer_count')
+              .then(response => response.json())
+              .then(data => {
+                  countElement2.textContent = data.count;
+                  if (data.count <= 100) {
+                      requestAnimationFrame(updateCount2);
+                  } else {
+                      countElement2.style.color = '#e74c3c'; 
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      }
+
+      updateCount2();
+      updateCount();
+  });
+  </script>
+</body>
+
+</html>
+

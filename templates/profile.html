@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        .header {
+            background-image: url('https://wallpapercave.com/wp/wp12396645.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            height: 550px;
+            background-position: center;
+
+        }
+
+        .log {
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            float: right;
+            margin-top: 12px;
+            margin-right: 12px;
+            transition: transform 1.5s ease-out;
+        }
+
+        .tabs {
+            padding: 10px;
+            color: #FFF8DC;
+            margin-top: 10px;
+            text-decoration: none;
+            font-family: 'Cascadia Code', sans-serif;
+            font-weight: 400;
+
+        }
+
+        .tabs:hover {
+            color: #F0F8FF;
+            transform: scale(1.05);
+        }
+
+        .headw {
+            font-size: 195px;
+            text-align: right;
+            font-family: 'Cascadia Code';
+            color: #F5F5DC80;
+            padding-top: 200px;
+        }
+
+        .count-container {
+            font-family: 'Cascadia Code';
+            text-align: right;
+            height: 200px;
+        }
+
+        .count {
+            margin-bottom: 80px;
+            font-size: 150px;
+            color: #2F4F4F;
+            font-weight: bold;
+            padding: 20px;
+            border: transparent;
+            display: inline-block;
+            margin: 10px;
+            transition: color 0.5s ease-in-out;
+        }
+
+        .para {
+            text-align: left;
+            font-size: 40px;
+            margin-top: 80px;
+        }
+
+        .profile {
+            width: 15%;
+            height: 100%;
+            color: white;
+            background-color: #001a21;
+            float: left;
+            position: fixed;
+        }
+
+        .content {
+            width: 85%;
+            height: auto;
+            float: right;
+        }
+
+        .prof_tab {
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 15px;
+            float: left;
+        }
+
+        .prof_tab:hover {
+            margin-left: 10px;
+            width: 75%;
+            background-color: #dddddd51;
+            border-radius: 10px;
+        }
+
+        .foot {
+            font-family: 'Cascadia Code';
+            position: absolute;
+            margin: 10px;
+            bottom: 0;
+            padding-left: 10px;
+        }
+
+        span {
+            color: white;
+            font-family: 'Vivaldi';
+            font-size: 99px;
+        }
+
+        .text {
+            color: white;
+            font-family: 'Cascadia Code';
+            padding-left: 30px;
+            font-size: 29px;
+            padding-top: 340px;
+        }
+
+        .card {
+
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .column {
+            float: right;
+            width: 24%;
+            padding: 0 10px;
+            justify-content: center;
+        }
+
+      .information-cont {
+        font-family: 'Cascadia Code';
+        height: 200px;
+      }
+
+
+      .info {
+          text-align: left;
+          font-size: 20px;
+          padding: 5px;
+          margin-left: 10px;
+      }
+
+      .spacer {
+          margin: 10px;
+      }
+
+    </style>
+    <script href="home_script.js"></script>
+
+</head>
+
+<body>
+    <div class="profile">
+        <div style="height:10px;"></div>
+        <div class="prof_tab">
+          <a class="tabs" href="{{ url_for('returner', username = username) }}">Home</a>
+        </div>
+        <div class="prof_tab">
+            <a class="tabs" href="{{ url_for('connection', username = username) }}">Connections</a>
+        </div>
+        <div class="prof_tab">
+            <a class="tabs" href="{{ url_for('sales', username = username) }}">Sales</a>
+        </div>
+        <div class="prof_tab">
+            <a class="tabs" href=" {{ url_for('logout') }}">Logout</a>
+        </div>
+        <div class="foot"> ©fAB • 2023</div>
+    </div>
+    <div class="content">
+        <div class="header">
+            <img class="log" src="https://farmersupport.paipananya28.repl.co/static/logo.png"
+                alt="My Logo">
+            <p class="text"><span>Thank you</span><br> .... for weaving a tapestry of sustenance from the simplest of
+                deeds
+            </p>
+        </div>
+
+        <div class="information-cont">
+          <p class="info">Name     : {{ user_profile.uname }} </p>
+          <p class="info">Username: {{ user_profile.username }} </p>
+          <p class="info">Location: {{ user_profile.ulocation }} </p>
+          <p class="info">Phone    : {{ user_profile.uphone }} </p>
+        </div>
+    </div>
+</body>

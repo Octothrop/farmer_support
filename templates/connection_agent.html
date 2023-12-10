@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Connections</title>
+    <style>
+      *{
+        margin:0px;
+      }
+        .log {
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            margin-top: 12px;
+            margin-left: 12px;
+            transition: transform 1.5s ease-out;
+        }
+        .tabs {
+            padding: 10px;
+            color: #FFF8DC;
+            margin-top: 10px;
+            text-decoration: none;
+            font-family: 'Cascadia Code', sans-serif;
+            font-weight: 400;
+
+        }
+
+        .tabs:hover {
+            color: #F0F8FF;
+            transform: scale(1.05);
+        }
+
+        .profile {
+            width: 15%;
+            height: 100%;
+            color: white;
+            background-color: #001a21;
+            float: left;
+            position: fixed;
+        }
+
+        .content {
+            width: 85%;
+            height: auto;
+            float: right;
+        }
+
+        .prof_tab {
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 15px;
+            float: left;
+        }
+
+        .prof_tab:hover {
+            margin-left: 10px;
+            width: 75%;
+            background-color: #dddddd51;
+            border-radius: 10px;
+        }
+
+        .foot {
+            font-family: 'Cascadia Code';
+            position: absolute;
+            margin: 10px;
+            bottom: 0;
+            padding-left: 10px;
+        }
+        .button {
+            float: right;
+            font-family: 'Cascadia Code';
+            color: black;
+            margin: 15px;
+            text-decoration: none;
+        }
+
+        .button1 {
+            float: right;
+        }
+
+        .header {
+            height: 150px;
+        }
+
+      #sales-section table {
+        width: 80%;
+        border-collapse: collapse;
+        margin-left:10%;
+        font-family: 'Cascadia Code';
+      }
+
+      #sales-section th, #sales-section td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        font-family: 'Cascadia Code';
+      }
+
+      #sales-section th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+        font-family: 'Cascadia Code';
+      }
+
+      .new{
+        border-radius: 5px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #4CAF50;
+        border-color: #4CAF30;
+        color: white;
+        font-family: 'Cascadia Code';
+      }
+
+      .new:hover{
+        background-color: white;
+        border-color: #4CAF30;
+        color: #4CAF50;
+      }
+
+      .sales-section{
+      }
+      .mainimg{
+        heigth: 100px;
+        width: 600px;
+      }
+    </style>
+</head>
+<body>
+  <div class="profile">
+      <div style="height:10px;"></div>
+
+    <div class="prof_tab">
+    <a class="tabs" href="{{ url_for('returner', username=username) }}">Home</a>
+    </div>
+      <div class="prof_tab">
+          <a class="tabs" href="{{ url_for('profile', username=username) }}">Profile</a>
+      </div>
+      <div class="prof_tab">
+        <a class="tabs" href="{{ url_for('sell', username=username) }}">Sell</a>
+      </div>
+      <div class="prof_tab">
+          <a class="tabs" href="{{ url_for('sales', username = username) }}">Sales</a>
+      </div>
+    <div class="prof_tab">
+      <a class="tabs" href="{{ url_for('buy', username = username) }}">Buy</a>
+    </div>
+      <div class="foot"> ©fAB • 2023</div>
+  </div>
+  <div class="content">
+<div class="header">
+    <a class="button1" href="{{ url_for('returner', username=username) }}"><img class="log" src="https://farmersupport.paipananya28.repl.co/static/logob.png"></a>
+  <div>
+ </div>
+</div>
+  <div id="sales-section" class="hidden">
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                {% if (role == 'farmer' and user.urole == 'agent') or (role == 'agent' and user.urole in ['farmer', 'buyer']) or (role == 'buyer' and user.urole == 'agent') %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.urole }}</td>
+                        <td>
+                            {% if user.connected_status == 'Connected' %}
+                                Connected
+                            {% else %}
+                                <form action='{{ url_for("connect_me", username=username) }}' method="POST">
+                                    <input type="hidden" name="userx" value="{{ user.username }}">
+                                    <button class ="new" type="submit">Connect</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+  </div>
+  </div>
+</body>
+</html>

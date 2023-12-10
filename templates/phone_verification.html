@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Verification</title>
+    <style>
+      body {
+          font-family: 'Cascadia Code';
+          background-image: url('https://wallpapercave.com/wp/wp11180768.jpg');
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      .container {
+          background-color: rgba(255, 255, 255, 0.9); 
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          text-align: center;
+      }
+
+      h1 {
+          color: #803dba;
+      }
+
+      p {
+          color: #333; 
+          margin-bottom: 20px;
+      }
+
+      form {
+          margin-top: 20px;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 8px;
+          color: #333; 
+      }
+
+      input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 16px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.7);
+      }
+
+      button {
+          background-color: #a526c9; 
+          color: #fff;
+          padding: 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #8b0bb4; 
+          transform: scale(1.1); 
+      }body {
+          font-family: 'Cascadia Code';
+          background-image: url('https://wallpapercave.com/wp/wp11180768.jpg');
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      .container {
+          background-color: rgba(255, 255, 255, 0.9); 
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          text-align: center;
+      }
+
+      h1 {
+          color: #803dba; 
+      }
+
+      p {
+          color: #333; 
+          margin-bottom: 20px;
+      }
+
+      form {
+          margin-top: 20px;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 8px;
+          color: #333; 
+      }
+
+      input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 16px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.7); 
+      }
+
+      button {
+          background-color: #a526c9; 
+          color: #fff;
+          padding: 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: #8b0bb4;
+          transform: scale(1.1); 
+      }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Verify Your Phone Number</h1>
+        <p>Please enter your phone number to receive a one-time password (OTP) for verification.</p>
+        <form action="/otp_send" method="POST">
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number" placeholder="Enter phone number" value="+91"
+                required>
+            <br>
+            <button type="submit">Send OTP</button>
+        </form>
+    </div>
+</body>
+
+</html>

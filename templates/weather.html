@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Crop Checker</title>
+    <style>
+        body {
+            background-image: url('https://th.bing.com/th/id/R.cf5d073cf01773912e24cf534c8ae018?rik=IurNN5e5tlT93A&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fwc1729425.jpg&ehk=OqttV4uI0jGXPOKH2pgiYbmgKzB1Hp8x8On%2btbZ6AgU%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            font-family: 'Cascadia Code', sans-serif; /* Change font family to Cascadia Code */
+            background-color: #4caf50; /* Lighten the background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: #66bb6a; /* Lighten the green color */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .card-header {
+            background-color: #43a047; /* Lighten the header color */
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-container label,
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            font-family: 'Cascadia Code', sans-serif;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 15px; 
+            color: #fff; 
+            font-size: 16px;
+        }
+
+        .form-container input,
+        .form-container select.custom-dropdown {
+            width: 100%;
+            padding: 14px;
+            box-sizing: border-box;
+            border: 2px solid #43a047;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-container input:focus,
+        .form-container select.custom-dropdown:focus {
+            border-color: #2e7d32; 
+        }
+
+        .form-container button {
+            background-color: #fff; 
+            color: #43a047; 
+            padding: 11px; 
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+            font-size: 16px; 
+            font-weight: bold;
+            margin-top: 10px; 
+        }
+
+        .form-container button:hover {
+            background-color: #e0e0e0; 
+            color: #2e7d32; 
+            font-weight: normal; 
+        }
+
+        h1 {
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>Check the weather & predict</h1>
+        </div>
+
+        
+    <form class="form-container" method="post" action="/get_temperature">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Get Temperature</button>
+    </form>
+
+    {% if temperature %}
+        <p>Current Temperature in {{ city }}: {{ temperature }} degrees Celsius</p>
+
+        <form class="form-container" method="post" action="/weather">
+            <input type="hidden" name="city" value="{{ city }}">
+            <label for="crop">Choose a Crop:</label>
+            <select id="crop" name="crop" required>
+                <option value="eggplant">Eggplant</option>
+                <option value="tomato">Tomato</option>
+                <option value="carrot">Carrot</option>
+                <option value="apple">Apple</option>
+            </select>
+            <button type="submit">Check</button>
+        </form>
+        {% if result %}
+            <p>{{ result }}</p>
+            {% if crop_state %}
+                <p>Crop State: {{ crop_state }}</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</div>
+</body>
+</html>
+</body>
+</html>

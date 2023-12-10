@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Items</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+
+    .profile {
+        width: 15%;
+        height: 100%;
+        color: white;
+        background-color: #001a21;
+        float: left;
+        position: fixed;
+    }
+
+    .content {
+        width: 85%;
+        height: auto;
+        float: right;
+    }
+
+    .prof_tab {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 15px;
+        float: left;
+    }
+
+    .prof_tab:hover {
+        margin-left: 10px;
+        width: 75%;
+        background-color: #dddddd51;
+        border-radius: 10px;
+    }
+
+    .foot {
+        font-family: 'Cascadia Code';
+        position: absolute;
+        margin: 10px;
+        bottom: 0;
+        padding-left: 10px;
+    }
+    .tabs {
+        padding: 10px;
+        color: #FFF8DC;
+        margin-top: 10px;
+        text-decoration: none;
+        font-family: 'Cascadia Code', sans-serif;
+        font-weight: 400;
+
+    }
+
+    .tabs:hover {
+        color: #F0F8FF;
+        transform: scale(1.05);
+    }
+    .mainimg{
+      width: 80%;
+      height: 20%;
+      margin:0px;
+    }
+
+    .cds{
+
+      font-family: 'Cascadia Code', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn{
+      background-color: #001a21;
+      color: white;
+      padding-bottom: 3px;
+      padding-left:17px;
+      padding-right: 17px;
+      border-radius: 8px;
+      border-color:black;
+    }
+
+    .btn:hover{
+      background-color:white ;
+      color: #001a21;
+       font-family: 'Cascadia Code', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <div style="height:10px;"></div>
+    <div class="prof_tab">
+    <a class="tabs" href="{{ url_for('returner', username=username) }}">Home</a>
+    </div>
+    <div class="prof_tab">
+        <a class="tabs" href="{{ url_for('connection', username = username) }}">Connections</a>
+    </div>
+    <div class="prof_tab">
+        <a class="tabs" href="{{ url_for('sales', username = username) }}">Sales</a>
+    </div>
+
+    <div class="foot"> ©fAB • 2023</div>
+  </div>
+  <div class="content">
+    <div class="container mt-4">
+        <h1 class="mb-4">
+           <img class="mainimg" src="https://market-management-website--paipananya28.repl.co/static/sale.png"></h1>
+        <div class="row">
+            {% for sale in sales_data %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="cds">Crop: {{ sale.crop_name }}</p>
+                            <p class="cds">Farmer: {{ sale.farmer_name }}</p>
+                            <p class="cds">Price: {{ sale.sprice }} ₹/kg</p>
+                            <p class="cds">Quantity: {{ sale.iqty }} kg</p>
+                            <form action="{{ url_for('request_sale', username=username) }}" method="POST">
+                                <input type="hidden" name="sale_id" value="{{ sale.sid }}">
+                              <input type="hidden" name="user_id" value="{{ sale.userid }}">
+                              <input type="hidden" name="requser_id" value="{{ userid }}">
+                                <button type="submit" class="btn" >Buy</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

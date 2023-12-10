@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnerships</title>
+</head>
+<body>
+    <h1>Partnerships</h1>
+
+    {% for partnership in partnerships %}
+        <div>
+            <p>Amount: {{ partnership.amount }}</p>
+            <p>Username: {{ partnership.userid }}</p>
+            <p>Yield Date: {{ partnership.yield_date }}</p>
+            <img src="data:image/png;base64,{{ partnership.decoded_image }}" alt="Partner Image" width="200">
+            <form action="{{ url_for('partner', username=partnership.userid) }}" method="post">
+                <input type="submit" value="Partner">
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
